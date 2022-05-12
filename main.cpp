@@ -57,16 +57,14 @@ void *OrdenaVetor(void *argumento){
 
 int main(){
     pthread_mutex_init(&mutex,NULL);
-    pthread_t pthCria, pthMostra, pthOrdena;
-    void *resp;
-    int rstatus;
+    pthread_t thread;
     
-    pthread_create(&pthCria, NULL, CriaVetor, (void *)("abcd"));
-    pthread_create(&pthMostra, NULL, MostraVetor, (void *)("abcd"));
-    pthread_create(&pthOrdena, NULL, OrdenaVetor, (void *)("abcd"));
+    pthread_create(&thread, NULL, CriaVetor, NULL);
+    pthread_create(&thread, NULL, MostraVetor, NULL);
+    pthread_create(&thread, NULL, OrdenaVetor, NULL);
     
-    pthread_join(pthCria,&resp);
-    pthread_join(pthMostra,&resp);
-    pthread_join(pthOrdena,&resp);
+    pthread_join(thread, NULL);
+    pthread_join(thread, NULL);
+    pthread_join(thread, NULL);
     pthread_mutex_destroy(&mutex);
 }
